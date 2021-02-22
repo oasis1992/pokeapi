@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Container, Content, List, ListItem, Text, Left } from 'native-base'
+import {
+    Container, Content, List, ListItem, Text, Left,
+} from 'native-base'
 
 const PokemonAbilities = ({ abilities }) => (
     <Container>

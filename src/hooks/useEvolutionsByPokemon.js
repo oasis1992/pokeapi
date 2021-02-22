@@ -4,15 +4,15 @@ import { getEvolutions } from '../providers/pokeApi'
 const useEvolutionsByPokemon = (pokemonId) => {
     const [loading, setLoading] = useState(false)
     const [evolutions, setEvolutions] = useState([])
- 
+
     useEffect(() => {
         setLoading(true)
-        getEvolutions(pokemonId).then((evolutions) => {
-            setEvolutions(evolutions)
+        getEvolutions(pokemonId).then((newEvolutions) => {
+            setEvolutions(newEvolutions)
         })
-        .finally(() => {
-            setLoading(false)
-        })
+            .finally(() => {
+                setLoading(false)
+            })
     }, [
         pokemonId,
         setEvolutions,

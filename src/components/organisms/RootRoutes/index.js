@@ -1,13 +1,14 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
+import { useSelector } from 'react-redux'
 import PokemonList from '../../screens/PokemonList'
 import PokemonPreview from '../../screens/PokemonPreview'
-import { useSelector } from 'react-redux'
-
 
 const RootRoutes = () => {
     const Stack = createStackNavigator()
-    const currentPokemonNameSelected = useSelector((state) => state.pokemon.currentNamePokemonSelected)
+    const currentPokemonNameSelected = useSelector(
+        (state) => state.pokemon.currentNamePokemonSelected,
+    )
 
     return (
         <Stack.Navigator

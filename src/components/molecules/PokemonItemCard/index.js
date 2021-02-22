@@ -1,4 +1,6 @@
-import { Body, Left, ListItem, Text, Thumbnail } from 'native-base'
+import {
+    Body, Left, ListItem, Text, Thumbnail,
+} from 'native-base'
 import PropTypes from 'prop-types'
 import React from 'react'
 
@@ -22,7 +24,7 @@ const PokemonItemCard = ({
                 </Left>
             )
         }
-       
+
         <Body>
             <Text>{title}</Text>
         </Body>

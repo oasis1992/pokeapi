@@ -1,7 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Container, Content, List, ListItem, Text, Left } from 'native-base';
-import PokemonItemCard from '../PokemonItemCard';
+import {
+    Container, Content, List,
+} from 'native-base'
+import PokemonItemCard from '../PokemonItemCard'
 
 const PokemonSprites = ({ sprites }) => (
     <Container>

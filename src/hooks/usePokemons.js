@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import {
-    getPokemonWithPagination
+    getPokemonWithPagination,
 } from '../providers/pokeApi'
 import useGetPokemons from './useGetPokemons'
 import useUpdatePokemons from './useUpdatePokemons'
@@ -25,9 +25,9 @@ const usePokemons = ({
             }))
             updatePokemons(newPokemons)
         })
-        .finally(() => {
-            setLoading(false)
-        })
+            .finally(() => {
+                setLoading(false)
+            })
     }, [
         updatePokemons,
         setLoading,

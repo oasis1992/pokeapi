@@ -7,7 +7,7 @@ import Loading from '../../atoms/Loading'
 import CenterTemplate from '../../templates/CenterTemplate'
 import usePokemons from '../../../hooks/usePokemons'
 import {
-    Container
+    Container,
 } from './style'
 import PokemonItemCard from '../../molecules/PokemonItemCard'
 import useUpdateCurrentPokemonName from '../../../hooks/useUpdateCurrentPokemonName'
@@ -21,13 +21,13 @@ const PokemonList = ({ navigation }) => {
         limit: LIMIT_PER_PAGE,
     })
 
-    const getItemCount = (data) => data.length;
+    const getItemCount = (data) => data.length
 
     const getItem = useCallback((data, index) => data[index], [])
 
     const renderFooter = useCallback(() => {
         if (loading) {
-            return <Loading /> 
+            return <Loading />
         }
         return null
     }, [loading])
@@ -41,7 +41,7 @@ const PokemonList = ({ navigation }) => {
             <CenterTemplate>
                 <Loading />
             </CenterTemplate>
-        ) 
+        )
     }
 
     return (
@@ -63,13 +63,13 @@ const PokemonList = ({ navigation }) => {
                             }}
                         />
                     </List>
-                    
+
                 )}
-                keyExtractor={item => JSON.stringify(item.id)}
+                keyExtractor={(item) => JSON.stringify(item.id)}
                 getItemCount={getItemCount}
                 getItem={getItem}
             />
-        </Container> 
+        </Container>
     )
 }
 

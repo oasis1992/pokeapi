@@ -3,14 +3,14 @@ import axios from 'axios'
 const API_URL = 'https://pokeapi.co/api/v2/'
 
 const getUriMainPicture = (sprites) => {
-    if (!sprites || typeof sprites !== 'object' ) {
+    if (!sprites || typeof sprites !== 'object') {
         return null
     }
     return Object.keys(sprites).map((key) => sprites[key])[0]
 }
 
 const formatSprites = (sprites) => {
-    if (!sprites || typeof sprites !== 'object' ) {
+    if (!sprites || typeof sprites !== 'object') {
         return []
     }
     return Object.keys(sprites).map((key) => {
@@ -32,7 +32,7 @@ const formatAbilities = (abilities) => {
 
     return abilities.map((item) => ({
         name: item.ability.name,
-        url:  item.ability.url,
+        url: item.ability.url,
     }))
 }
 
@@ -49,7 +49,7 @@ const formatEvolutions = ({
         ...formatEvolutions({
             specie: evolutionChain.species,
             evolvesTo: evolutionChain.evolves_to,
-        })
+        }),
     ], [])
 
     if (!evolutions.length) {
@@ -104,7 +104,7 @@ export const getEvolutions = async (pokemonId) => {
     }
 
     const evolutionChainResponse = await getEvolutionChain(response.data.evolution_chain.url)
-    
+
     if (!evolutionChainResponse) {
         return []
     }
@@ -114,7 +114,7 @@ export const getEvolutions = async (pokemonId) => {
         evolvesTo: evolutionChainResponse.evolves_to,
     })
 
-    const newEvolutions = await Promise.all(evolutions.map(async(evolution) => {
+    const newEvolutions = await Promise.all(evolutions.map(async (evolution) => {
         const pokemonDetail = await getPokemonDetails(evolution.name)
         return {
             ...evolution,
@@ -125,14 +125,13 @@ export const getEvolutions = async (pokemonId) => {
     return newEvolutions
 }
 
-
-export const getPokemonWithPagination = async (limit=20, currentPage=0) => {
+export const getPokemonWithPagination = async (limit = 20, currentPage = 0) => {
     const uri = `${API_URL}/pokemon?limit=${limit}&offset=${currentPage * limit}`
     const response = await axios.get(uri)
 
     let newResults = response.data.results
     if (Array.isArray(newResults) && newResults.length) {
-        newResults = await Promise.all(newResults.map(async(pokemon) => {
+        newResults = await Promise.all(newResults.map(async (pokemon) => {
             const pokemonDetail = await getPokemonDetails(pokemon.name)
 
             if (!pokemonDetail || typeof pokemonDetail !== 'object') {
@@ -144,7 +143,7 @@ export const getPokemonWithPagination = async (limit=20, currentPage=0) => {
                 image: getUriMainPicture(pokemonDetail.sprites),
                 abilities: formatAbilities(pokemonDetail.abilities),
                 sprites: formatSprites(pokemonDetail.sprites),
-                weight: pokemonDetail.weight || 'unknown'
+                weight: pokemonDetail.weight || 'unknown',
             }
         }).filter((pokemon) => !!pokemon))
 

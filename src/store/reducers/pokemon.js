@@ -16,9 +16,9 @@ export default (state = defaultState, action) => {
             pokemons: [
                 ...state.pokemons || [],
                 ...action.payload,
-            ]
+            ],
         }
-    case UPDATE_CURRENT_POKEMON_NAME: 
+    case UPDATE_CURRENT_POKEMON_NAME:
         return {
             ...state,
             currentNamePokemonSelected: action.payload,

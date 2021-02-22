@@ -12,4 +12,3 @@ export const updateCurrentPokemonName = (payload) => ({
     type: UPDATE_CURRENT_POKEMON_NAME,
     payload,
 })
-

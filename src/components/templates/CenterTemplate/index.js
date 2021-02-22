@@ -11,7 +11,7 @@ const CenterTemplate = ({
 )
 
 CenterTemplate.propTypes = {
-    children: PropTypes.node,
+    children: PropTypes.node.isRequired,
 }
 
 export default CenterTemplate
