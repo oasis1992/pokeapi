@@ -1,0 +1,7 @@
+export const UPDATE_POKEMONS = 1
+export const UPDATE_CURRENT_POKEMON_NAME = 2
+
+export const actionTypesNames = {
+    [UPDATE_POKEMONS]: 'UPDATE_POKEMONS',
+    [UPDATE_CURRENT_POKEMON_NAME]: 'UPDATE_CURRENT_POKEMON_NAME',
+}
