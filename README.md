@@ -11,4 +11,4 @@ npx react-native run-android
 
 cd ios && pod install
 
-npx react-native run-android
+npx react-native run-ios
